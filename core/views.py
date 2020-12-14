@@ -123,6 +123,8 @@ class RegisterView(View):
 
 User = get_user_model()
 def register_page(request):
+    if request.user.is_authenticated:
+        return redirect("/profile")
     form = RegisterForm(request.POST or None)
 
     context = {
