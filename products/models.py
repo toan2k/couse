@@ -1,4 +1,5 @@
 from django.db import models
+from accounts.models import CustomerUser
 
 # Create your models here.
 
@@ -38,20 +39,13 @@ class Course(models.Model):
 class Variation(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     title = models.CharField(default="", max_length=255)
-    price = models.FloatField(default=0)
-    sale_price = models.IntegerField(default=0)
+    sale_price = models.FloatField(default=0)
     active = models.BooleanField(default=True)
     def __str__(self):
         return self.title
 
-# class Rating(models.Model):
-#     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-#     user = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
-#     rate = models.IntegerField(default=0)
-#     comment = models.TextField(default = "")
-
-# class Comment(models.Model):
-#     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-#     user = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
-#     rate = models.IntegerField(default=0)
-#     comment = models.TextField(default = "")
+class Rating(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
+    rate = models.IntegerField(default=0)
+    comment = models.TextField(default = "")

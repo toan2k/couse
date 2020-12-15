@@ -52,6 +52,11 @@ INSTALLED_APPS = [
     'blogs',
     'events',
     'quiz',
+    'home',
+    'contact',
+    'about',
+    'footer',
+    'chat',
     
 ]
 
